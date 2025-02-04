@@ -35,7 +35,7 @@ const FrontendBackground = () => {
         const sprites = new THREE.Group();
         const fontLoader = new THREE.TextureLoader();
 
-        elements.forEach((text, index) => {
+        elements.forEach((text) => {
             const canvas = document.createElement('canvas');
             const context = canvas.getContext('2d');
             canvas.width = 256;

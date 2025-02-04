@@ -66,7 +66,7 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.4
+            staggerChildren: 0.5
         }
     }
 };
@@ -78,7 +78,7 @@ const itemVariants = {
     visible: {
         opacity: 1,
         transition: {
-            duration: 0.8
+            duration: 0.5
         }
     }
 };
@@ -88,20 +88,20 @@ export default function Skills() {
     const isInView = useInView(ref, { once: false });
 
     return (
-        <div className="text-amber-100 p-3 sm:p-2">
+        <div className="text-amber-100 p-3 sm:p-2 sm:mx-0 mx-auto">
             <div className="container mx-auto" ref={ref}>
                 <motion.h2
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ duration: 0.8 }}
-                    className="text-3xl xl:text-4xl font-bold mb-12 flex items-center gap-4"
+                    className="text-3xl xl:text-4xl font-bold mb-12 flex items-center gap-4  justify-center sm:justify-start"
                 >
-                    <Code className="text-primary" />
+                    <Code className="text-primary " />
                     My Skills
                 </motion.h2>
 
                 <motion.div
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+                    className="grid grid-cols-1 px-8 sm:px-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
                     variants={containerVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
@@ -110,19 +110,19 @@ export default function Skills() {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="group relative overflow-hidden rounded-xl transition-all duration-300 cursor-pointer"
+                            className="group relative  overflow-hidden rounded-xl transition-all duration-300 cursor-pointer"
                         >
-                            <div className="relative z-10 flex flex-col items-center justify-center p-6 h-40">
+                            <div className="relative z-0 flex flex-col items-center justify-center p-6 h-40">
                                 <img
                                     src={skill.iconPath}
                                     alt={skill.name}
-                                    className="w-28 h-28 mb-4 transition-transform duration-300 group-hover:scale-110"
+                                    className="w-28 h-28 mb-4 transition-transform duration-300 group-hover:scale-110 "
                                 />
                                 <span className="text-lg font-medium text-center">
                                     {skill.name}
                                 </span>
                             </div>
-                            <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-30 group-hover:opacity-100 transition-opacity duration-300`} />
+                            <div className={`sm:mx-0 mx-16 absolute  inset-0 bg-gradient-to-br ${skill.color} opacity-100 group-hover:opacity-0 transition-opacity duration-300 rounded-2xl`} />
                             <div className="absolute -bottom-2 -right-2 w-32 h-32 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </motion.div>
                     ))}

@@ -48,10 +48,10 @@ export default function Projects() {
                         >
                             <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>
                             <p className="mb-4">{project.description}</p>
-                            <div className="flex justify-between items-center">
-                                <div className="flex gap-2">
+                            <div className="flex justify-between items-center flex-wrap gap-1">
+                                <div className="flex gap-1 sm:gap-2 flex-wrap">
                                     {project.technologies.map((tech, techIndex) => (
-                                        <span key={techIndex} className="bg-primary/30 px-2 py-1 rounded-md text-sm">
+                                        <span key={techIndex} className="bg-primary/30 px-2  rounded-md text-sm">
                                             {tech}
                                         </span>
                                     ))}

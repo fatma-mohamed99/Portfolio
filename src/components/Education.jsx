@@ -88,7 +88,7 @@ export default function Education() {
                                 initial={{ scale: 0 }}
                                 animate={isInView ? { scale: 1 } : { scale: 0 }}
                                 transition={{ duration: 0.7, delay: 0.5 }}
-                                className="relative z-10"
+                                className="relative z-10  sm:block hidden"
                             >
                                 <CheckCircle className="w-8 h-8 text-primary" />
                             </motion.div>
