@@ -1,38 +1,63 @@
-import React from 'react';
-import { FolderOpenDot, Github, ExternalLink } from 'lucide-react';
+import React, { useState } from "react";
+import { FolderOpenDot, Github, ExternalLink, Video, X } from "lucide-react";
+import fieldTalent from "../assets/video/field-talent.mp4";
+import exam from "../assets/video/exam.webm";
+import autoGeer from "../assets/video/auto-geer.webm";
+
+const projectVideos = {
+    fieldTalent,
+    exam,
+    autoGeer,
+};
 
 const projectsData = [
     {
+        title: "IKNOWLY",
+        description:
+            "iknowly is Germany's premier marketplace connecting you with top professionals from leading companies. Discover expert guidance and career growth opportunities today.",
+        technologies: ["Next.js", "Tailwind CSS"],
+        githubLink: "",
+        liveLink: "https://www.iknowly.com",
+    },
+    {
         title: "Field-Talent",
-        description: "A freelance platform connecting civil engineers with clients for construction projects like building or renovation. Engineers are verified with ID and graduation certificates.",
+        description:
+            "A freelance platform connecting civil engineers with clients for construction projects like building or renovation. Engineers are verified with ID and graduation certificates.",
         technologies: ["React", "Tailwind CSS"],
         githubLink: "https://github.com/fatma-mohamed99/Field-Talent",
-        liveLink: ""
+        liveLink: "",
+        viewVideo: "fieldTalent",
     },
     {
         title: "AutoGeer",
         description: "An e-commerce platform selling car spare parts.",
-        technologies: ["Angular", "bootstrap"],
+        technologies: ["Angular", "TypeScript", "Bootstrap"],
         githubLink: "https://github.com/fatma-mohamed99/AutoGeer",
-        liveLink: ""
+        liveLink: "",
+        viewVideo: "autoGeer",
     },
     {
         title: "Examination System",
         description: "A pure JavaScript-based system for online exams.",
         technologies: ["JavaScript", "HTML", "CSS"],
         githubLink: "https://github.com/fatma-mohamed99/Examination_System",
-        liveLink: ""
+        liveLink: "",
+        viewVideo: "exam",
     },
-    {
-        title: "POSTS Blog",
-        description: "A blog built with React and Tailwind CSS. A beginner project showcasing posts and their management.",
-        technologies: ["React", "Tailwind CSS"],
-        githubLink: "https://github.com/fatma-mohamed99/POSTS",
-        liveLink: ""
-    }
+
 ];
 
 export default function Projects() {
+    const [selectedVideo, setSelectedVideo] = useState(null);
+
+    const handleVideoClick = (videoKey) => {
+        setSelectedVideo(projectVideos[videoKey]);
+    };
+
+    const closeModal = () => {
+        setSelectedVideo(null);
+    };
+
     return (
         <div className="text-amber-100 p-3 sm:p-2">
             <div className="container mx-auto">
@@ -40,35 +65,73 @@ export default function Projects() {
                     <FolderOpenDot className="text-primary" />
                     Some Projects
                 </h2>
-                <div className="grid lg:grid-cols-2 gap-6   ">
+                <div className="grid lg:grid-cols-2 gap-6">
                     {projectsData.map((project, index) => (
                         <div
                             key={index}
-                            className="bg-primary lg:max-h-fit lg:min-h-52 sm:max-w-fit  sm:min-w-[100%] min-w-[10%] max-w-[100%] flex flex-col lg:justify-between  p-6 rounded-xl transition-all duration-300 hover:scale-101 hover:shadow-md hover:shadow-amber-100 cursor-pointer"
+                            className="bg-primary lg:max-h-fit lg:min-h-52 sm:max-w-fit sm:min-w-full min-w-[10%] max-w-full flex flex-col lg:justify-between p-6 rounded-xl transition-all duration-300 hover:scale-101 hover:shadow-md hover:shadow-amber-100 cursor-pointer"
                         >
                             <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>
                             <p className="mb-4">{project.description}</p>
                             <div className="flex justify-between items-center flex-wrap gap-1">
                                 <div className="flex gap-1 sm:gap-2 flex-wrap">
                                     {project.technologies.map((tech, techIndex) => (
-                                        <span key={techIndex} className="bg-primary/30 px-2  rounded-md text-sm">
+                                        <span
+                                            key={techIndex}
+                                            className="bg-main/40 px-2 rounded-md text-sm"
+                                        >
                                             {tech}
                                         </span>
                                     ))}
                                 </div>
-                                <div className="flex gap-3">
-                                    <a href={project.githubLink} target="_blank" className="hover:text-white transition-colors">
-                                        <Github />
-                                    </a>
-                                    {project.liveLink && <a href={project.liveLink} target="_blank" className="hover:text-white transition-colors">
-                                        <ExternalLink />
-                                    </a>}
+                                <div className="flex gap-3 pl-2 sm:pl-0 pt-2 sm:pt-0">
+                                    {project.githubLink && (
+                                        <a
+                                            href={project.githubLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="hover:text-white transition-colors"
+                                        >
+                                            <Github />
+                                        </a>
+                                    )}
+                                    {project.viewVideo && (
+                                        <button
+                                            onClick={() => handleVideoClick(project.viewVideo)}
+                                            className="hover:text-white transition-colors"
+                                        >
+                                            <Video />
+                                        </button>
+                                    )}
+                                    {project.liveLink && (
+                                        <a
+                                            href={project.liveLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="hover:text-white transition-colors"
+                                        >
+                                            <ExternalLink />
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {selectedVideo && (
+                <div className="fixed inset-0 bg-main/80 bg-opacity-70 z-50 flex items-center justify-center p-4">
+                    <div className=" rounded-lg p-4 max-w-xl w-full relative">
+                        <div className="flex justify-end">
+                            <button onClick={closeModal} className="  hover:bg-primary  p-2 rounded-sm  cursor-pointer">
+                                <X className="text-amber-100" />
+                            </button>
+                        </div>
+                        <video src={selectedVideo} autoPlay className="w-full h-auto rounded-lg " />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

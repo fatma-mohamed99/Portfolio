@@ -122,7 +122,7 @@ export default function Skills() {
                                     {skill.name}
                                 </span>
                             </div>
-                            <div className={`sm:mx-0 mx-16 absolute  inset-0 bg-gradient-to-br ${skill.color} opacity-100 group-hover:opacity-0 transition-opacity duration-300 rounded-2xl`} />
+                            <div className={` absolute  inset-0 bg-gradient-to-br ${skill.color} opacity-100 group-hover:opacity-0 transition-opacity duration-300 rounded-2xl`} />
                             <div className="absolute -bottom-2 -right-2 w-32 h-32 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </motion.div>
                     ))}

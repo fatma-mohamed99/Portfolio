@@ -9,7 +9,7 @@ function App() {
   return (
     <div
       className={`px-2 bg-transparent ${isBgLoaded ? "bg-transparent" : "bg-main"
-        } relative md:px-6 xl:px-12 min-h-screen w-full overflow-x-hidden`}
+        } relative sm:px-4 md:px-10 xl:px-20 min-h-screen w-full overflow-x-hidden`}
     >
 
       <Suspense
