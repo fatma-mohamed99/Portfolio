@@ -44,18 +44,33 @@ const projectsData = [
         liveLink: "",
         viewVideo: "exam",
     },
-
 ];
+
+// VideoLoader Component
+const VideoLoader = () => (
+    <div className="flex items-center justify-center w-full h-64">
+        <div className="relative">
+            <div className="w-16 h-16 border-4 border-amber-100/30 rounded-full"></div>
+            <div className="w-16 h-16 border-4 border-amber-100 border-t-transparent animate-spin rounded-full absolute top-0"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <Video className="text-amber-100 animate-pulse" size={24} />
+            </div>
+        </div>
+    </div>
+);
 
 export default function Projects() {
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleVideoClick = (videoKey) => {
         setSelectedVideo(projectVideos[videoKey]);
+        setIsLoading(true);
     };
 
     const closeModal = () => {
         setSelectedVideo(null);
+        setIsLoading(false);
     };
 
     return (
@@ -122,14 +137,25 @@ export default function Projects() {
 
             {selectedVideo && (
                 <div className="fixed inset-0 bg-main/80 bg-opacity-70 z-50 flex items-center justify-center p-4">
-                    <div className=" rounded-lg max-w-3xl w-full relative">
+                    <div className="rounded-lg max-w-3xl w-full relative">
                         <div className="flex justify-end">
-                            <button onClick={closeModal} className="  hover:bg-primary  p-2 rounded-sm  cursor-pointer">
+                            <button
+                                onClick={closeModal}
+                                className="hover:bg-primary p-2 rounded-sm cursor-pointer"
+                            >
                                 <X className="text-amber-100" />
                             </button>
                         </div>
-                        <video src={selectedVideo} autoPlay className="w-full h-auto rounded-lg "
-                            onLoadedMetadata={(e) => e.target.playbackRate = 2} />
+
+                        {isLoading && <VideoLoader />}
+
+                        <video
+                            src={selectedVideo}
+                            autoPlay
+                            className={`w-full h-auto rounded-lg ${isLoading ? 'hidden' : 'block'}`}
+                            onLoadedData={() => setIsLoading(false)}
+                            onLoadedMetadata={(e) => e.target.playbackRate = 2}
+                        />
                     </div>
                 </div>
             )}
