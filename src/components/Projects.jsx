@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FolderOpenDot, Github, ExternalLink, Video, X } from "lucide-react";
 import fieldTalent from "../assets/video/field-talent.mp4";
-import exam from "../assets/video/exam.webm";
-import autoGeer from "../assets/video/auto-geer.webm";
+import exam from "../assets/video/exam.mp4";
+import autoGeer from "../assets/video/auto-geer.mp4";
 
 const projectVideos = {
     fieldTalent,
@@ -122,13 +122,14 @@ export default function Projects() {
 
             {selectedVideo && (
                 <div className="fixed inset-0 bg-main/80 bg-opacity-70 z-50 flex items-center justify-center p-4">
-                    <div className=" rounded-lg p-4 max-w-xl w-full relative">
+                    <div className=" rounded-lg max-w-3xl w-full relative">
                         <div className="flex justify-end">
                             <button onClick={closeModal} className="  hover:bg-primary  p-2 rounded-sm  cursor-pointer">
                                 <X className="text-amber-100" />
                             </button>
                         </div>
-                        <video src={selectedVideo} autoPlay className="w-full h-auto rounded-lg " />
+                        <video src={selectedVideo} autoPlay className="w-full h-auto rounded-lg "
+                            onLoadedMetadata={(e) => e.target.playbackRate = 2} />
                     </div>
                 </div>
             )}
