@@ -46,7 +46,6 @@ const projectsData = [
     },
 ];
 
-// VideoLoader Component
 const VideoLoader = () => (
     <div className="flex items-center justify-center w-full h-64">
         <div className="relative">
@@ -84,7 +83,7 @@ export default function Projects() {
                     {projectsData.map((project, index) => (
                         <div
                             key={index}
-                            className="bg-primary lg:max-h-fit lg:min-h-52 sm:max-w-fit sm:min-w-full min-w-[10%] max-w-full flex flex-col lg:justify-between p-6 rounded-xl transition-all duration-300 hover:scale-101 hover:shadow-md hover:shadow-amber-100 cursor-pointer"
+                            className="bg-primary lg:max-h-fit lg:min-h-52 sm:max-w-fit sm:min-w-full min-w-[10%] max-w-full flex flex-col lg:justify-between p-6 rounded-xl transition-all duration-300 hover:scale-101 hover:shadow-sm hover:shadow-amber-100 "
                         >
                             <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>
                             <p className="mb-4">{project.description}</p>
@@ -113,7 +112,7 @@ export default function Projects() {
                                     {project.viewVideo && (
                                         <button
                                             onClick={() => handleVideoClick(project.viewVideo)}
-                                            className="hover:text-white transition-colors"
+                                            className="hover:text-white transition-colors cursor-pointer"
                                         >
                                             <Video />
                                         </button>

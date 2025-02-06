@@ -149,10 +149,12 @@ const FrontendBackground = () => {
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                width: '100%',
-                height: '100%',
+                width: '100vw',
+                height: '100vh',
                 pointerEvents: 'none',
-                overflow: 'hidden'
+                overflow: 'hidden',
+                backgroundColor: '#0a1929',
+                transition: 'opacity 0.5s ease-in-out'
             }}
         />
     );
