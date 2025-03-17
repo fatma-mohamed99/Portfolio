@@ -14,7 +14,7 @@ const projectsData = [
     {
         title: "Wardlin",
         description: "Wardlin specializes in creating sustainable websites with a focus on performance, accessibility, and eco-friendly web solutions. We implement energy-efficient coding practices to optimize user experience while reducing environmental impact.",
-        technologies: ["Next.js", "MUI"],
+        technologies: [],
         githubLink: "",
         liveLink: "https://www.wardlin.com",
     },
