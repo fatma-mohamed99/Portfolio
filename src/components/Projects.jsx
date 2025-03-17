@@ -12,6 +12,13 @@ const projectVideos = {
 
 const projectsData = [
     {
+        title: "Wardlin",
+        description: "Wardlin specializes in creating sustainable websites with a focus on performance, accessibility, and eco-friendly web solutions. We implement energy-efficient coding practices to optimize user experience while reducing environmental impact.",
+        technologies: ["Next.js", "MUI"],
+        githubLink: "",
+        liveLink: "https://www.wardlin.com",
+    },
+    {
         title: "IKNOWLY",
         description:
             "iknowly is Germany's premier marketplace connecting you with top professionals from leading companies. Discover expert guidance and career growth opportunities today.",
@@ -19,6 +26,15 @@ const projectsData = [
         githubLink: "",
         liveLink: "https://www.iknowly.com",
     },
+    {
+        title: "The-Badr-Lab",
+        description:
+            "The Badr Lab is a freelance project developed for Dr. Badr, a microbiome researcher in Germany. The website serves as a platform for introducing Dr. Badr and his team, showcasing their research, publications, and scientific contributions.",
+        technologies: ["React", "TS", "Tailwind CSS"],
+        githubLink: "https://github.com/fatma-mohamed99/the-badr-lab",
+        liveLink: "https://the-badr-lab-iutb.vercel.app",
+    },
+
     {
         title: "Field-Talent",
         description:
@@ -31,7 +47,7 @@ const projectsData = [
     {
         title: "AutoGeer",
         description: "An e-commerce platform selling car spare parts.",
-        technologies: ["Angular", "TypeScript", "Bootstrap"],
+        technologies: ["Angular", "TS", "Bootstrap"],
         githubLink: "https://github.com/fatma-mohamed99/AutoGeer",
         liveLink: "",
         viewVideo: "autoGeer",
@@ -77,7 +93,7 @@ export default function Projects() {
             <div className="container mx-auto">
                 <h2 className="text-3xl xl:text-4xl font-bold mb-12 flex items-center gap-4">
                     <FolderOpenDot className="text-primary" />
-                    Some Projects
+                    Experience
                 </h2>
                 <div className="grid lg:grid-cols-2 gap-6">
                     {projectsData.map((project, index) => (
