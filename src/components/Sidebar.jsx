@@ -16,7 +16,7 @@ const Sidebar = () => {
     const navItems = [
         { icon: House, label: 'Home', sectionId: 'hero' },
         { icon: Code, label: 'Skills', sectionId: 'skills' },
-        { icon: FolderOpenDot, label: 'Experience', sectionId: 'projects' },
+        { icon: FolderOpenDot, label: 'Experience', sectionId: 'experience' },
         { icon: GraduationCap, label: 'Education', sectionId: 'education' },
         { icon: ContactRound, label: 'Contact', sectionId: 'contact' }
     ];
